@@ -1,1 +1,41 @@
 @import "root.css";
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  padding: 1rem;
+}
+
+.title {
+  font-size: 3rem;
+}
+
+.main {
+  flex: 1;
+  padding: 1rem;
+}
+
+.contrast {
+  font-size: 3rem;
+  -webkit-text-stroke-width: 0.2rem;
+}
+
+.header .ph-fill {
+  font-size: 3.5rem;
+  cursor: pointer;
+  color: var(--green-100);
+  transition: 0.2s linear;
+}
+
+.header .ph-fill:hover {
+  color: var(--green-300);
+}

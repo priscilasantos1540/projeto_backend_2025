@@ -2,7 +2,6 @@
 
 .title {
   font-size: 2rem;
-  margin: 0;
 }
 
 .label {
@@ -27,7 +26,6 @@
 .button {
   font-size: 1rem;
   width: 100%;
-  margin: 0;
 }
 
 .link {

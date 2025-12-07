@@ -52,7 +52,6 @@
   color: var(--green-100);
   max-width: 94rem;
   text-align: center;
-  margin-bottom: 4rem;
 }
 
 .contrast {
@@ -122,6 +121,19 @@
   border-color: var(--grey-50);
 }
 
+.check {
+  appearance: none;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 0.15rem;
+  border: 0.15rem solid var(--white-100);
+  margin-right: 0.5rem;
+}
+
+.check:checked {
+  background-color: var(--white-100);
+}
+
 .button {
   display: flex;
   align-items: center;
@@ -134,7 +146,6 @@
   padding: 1rem;
   border-radius: 0.5rem;
   transition: 0.2s linear;
-  margin-bottom: 1rem;
   cursor: pointer;
 }
 
@@ -153,19 +164,6 @@
 
 .link:hover {
   color: var(--green-300);
-}
-
-.check {
-  appearance: none;
-  height: 1rem;
-  width: 1rem;
-  border-radius: 0.15rem;
-  border: 0.15rem solid var(--white-100);
-  margin-right: 0.5rem;
-}
-
-.check:checked {
-  background-color: var(--white-100);
 }
 
 @keyframes pulse {
