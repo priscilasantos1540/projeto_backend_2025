@@ -1,23 +1,19 @@
 <?php
-// Arquivo: pagar_mercadopago.php
-session_start(); // 1. Session start obrigatório
-require 'Conexao.php'; // 2. Chama a Classe
 
-// VERIFICAÇÃO DE SEGURANÇA (Session)
+session_start(); 
+require 'Conexao.php';
+
 if (!isset($_SESSION['usuario_id'])) {
     die("Acesso negado! Por favor, faça login (rode o login_simulado.php).");
 }
 
-$userId = $_SESSION['usuario_id']; // Pegamos o ID da memória RAM (Session)
-$accessToken = 'APP_USR-6777044867566758-121512-1d636628dfb4647e618230ba2b040111-3067578484'; // ⚠️ COLOQUE SEU TOKEN DO MERCADO PAGO
+$userId = $_SESSION['usuario_id'];
+$accessToken = 'APP_USR-6777044867566758-121512-1d636628dfb4647e618230ba2b040111-3067578484'; 
 
 try {
-    // 3. Usando POO para conectar
+
     $conexao = new Conexao();
     $pdo = $conexao->getConexao();
-
-    // 4. Busca o último pedido PENDENTE deste usuário específico
-    // Regra de Negócio: Não podemos deixar pagar um pedido que não existe ou já foi pago.// Tabela pedido vinculada ao cliente
     $sql = "SELECT * FROM pedido WHERE cliente_id = :uid AND status = 'pendente' ORDER BY id DESC LIMIT 1";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':uid' => $userId]);
@@ -27,7 +23,7 @@ try {
         die("<h3>Nenhum pedido pendente encontrado para " . $_SESSION['usuario_nome'] . ".</h3>");
     }
 
-    // 5. Integração com Mercado Pago (cURL)
+    
     $dadosPagamento = [
         "items" => [
             [
@@ -63,7 +59,7 @@ try {
     $mp = json_decode($response, true);
     $link = $mp['init_point'] ?? '#';
 
-    // Exibição
+   
     echo "<h2>Olá, {$_SESSION['usuario_nome']}!</h2>";
     echo "<p>Você tem um pedido pendente no valor de <b>R$ " . number_format($pedido['total_liquido'], 2, ',', '.') . "</b>.</p>";
     echo "<a href='$link' style='background:#009EE3; color:white; padding:15px; text-decoration:none; border-radius:5px;'>Pagar Agora com Mercado Pago</a>";
@@ -72,4 +68,3 @@ try {
     echo "Erro no sistema: " . $e->getMessage();
 }
 ?>
-

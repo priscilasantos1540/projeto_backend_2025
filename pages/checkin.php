@@ -1,32 +1,64 @@
 <?php
-// /pages/checkin.php
 session_start();
 require_once __DIR__ . '/../includes/db.php';
 
-// 1. **PROTEÇÃO DE ACESSO**
-// Verifica se o usuário tem o perfil 'portaria' 
-if (!isset($_SESSION['usuario_id']) || $_SESSION['perfil'] !== 'portaria') { 
-    header("Location: /pages/auth.html"); // Redireciona para o login
+
+if (!isset($_SESSION['usuario_id']) || $_SESSION['perfil'] !== 'portaria') {
+    header("Location: /projeto_backend_2025/pages/auth.html"); // volta pro login
     exit;
 }
 ?>
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <meta charset="UTF-8">
     <title>Check-in | Portaria</title>
-    <script src="https://unpkg.com/html5-qrcode" defer></script> <script>
-        // Lógica de leitura e envio (ver /scripts/checkin.js)
-    </script>
+    <link rel="stylesheet" href="/styles/auth.css">
+    <script src="https://unpkg.com/html5-qrcode" defer></script> 
 </head>
 <body>
-    <h1>Painel de Check-in (Portaria)</h1>
-    <p>Operador logado: <?php echo htmlspecialchars($_SESSION['nome_usuario']); ?></p>
-    
-    <div id="reader" style="width: 400px; height: 300px;"></div> <input type="text" id="manual_input" placeholder="Ou digite o código do ingresso" />
-    <button onclick="iniciarCheckin(document.getElementById('manual_input').value)">Validar Manualmente</button>
 
-    <div id="resultado_checkin" style="margin-top: 20px; padding: 10px; border: 1px solid;">
-        Aguardando leitura...
-    </div>
+<div class="container">
+
+    <header class="header">
+        <h1 class="title">Painel de Check-in</h1>
+        <p class="subtitle">
+            Operador logado:
+            <strong><?= htmlspecialchars($_SESSION['nome_usuario']) ?></strong>
+        </p>
+    </header>
+
+    <main class="card">
+
+        <h2 class="card-title">Leitura do Ingresso</h2>
+
+        <div id="reader" class="qr-reader"></div>
+        <div class="divider">ou</div>
+
+        <div class="form-group">
+            <label for="manual_input">Código do ingresso</label>
+            <input
+                type="text"
+                id="manual_input"
+                class="input-text"
+                placeholder="Digite o código do ingresso"
+            >
+        </div>
+
+        <button
+            class="btn btn-primary"
+            onclick="iniciarCheckin(document.getElementById('manual_input').value)">
+            Validar Ingresso
+        </button>
+
+        <div id="resultado_checkin" class="alert alert-info">
+            Aguardando leitura do ingresso...
+        </div>
+
+    </main>
+
+</div>
+
 </body>
 </html>

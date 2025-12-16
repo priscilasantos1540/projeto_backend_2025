@@ -7,6 +7,11 @@ namespace Composer\Autoload;
 class ComposerStaticInit0393830ad13082bb726d7f225d4a3f36
 {
     public static $prefixLengthsPsr4 = array (
+        'c' =>
+        array (
+            'chillerlan\\Settings\\' => 20,
+            'chillerlan\\QRCode\\' => 18,
+        ),
         'M' =>
         array (
             'MercadoPago\\' => 12,
@@ -14,6 +19,14 @@ class ComposerStaticInit0393830ad13082bb726d7f225d4a3f36
     );
 
     public static $prefixDirsPsr4 = array (
+        'chillerlan\\Settings\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/chillerlan/php-settings-container/src',
+        ),
+        'chillerlan\\QRCode\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/chillerlan/php-qrcode/src',
+        ),
         'MercadoPago\\' =>
         array (
             0 => __DIR__ . '/..' . '/mercadopago/dx-php/src/MercadoPago',

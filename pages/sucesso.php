@@ -10,7 +10,7 @@ $pedido_id = $_GET['pedido_id'] ?? null;
 </head>
 <body>
   <main class="main">
-    <h1 class="title">PAGAMENTO APROVADO ✅</h1>
+    <h1 class="title">PAGAMENTO APROVADO</h1>
     <p>Pedido nº <?= htmlspecialchars($pedido_id) ?></p>
     <p>Seu ingresso foi gerado.</p>
     <a class="button" href="meus_ingressos.html">Ver ingresso</a>
