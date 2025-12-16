@@ -3,13 +3,14 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/mercado_pago.php';
-require_once __DIR__ . '/../IngressoService.php'; // aqui é o arquivo que gera o ingresso
+require_once __DIR__ . '/../GeradorDeIngressos.php'; // aqui é o arquivo que gera o ingresso
 
 use MercadoPago\Payment;
 use MercadoPago\SDK;
 
 
-$db = Database::getConnection();
+$conexao = new Conexao();
+$db = $conexao->getConexao();
 
 
 $data = json_decode(file_get_contents('php://input'), true);
