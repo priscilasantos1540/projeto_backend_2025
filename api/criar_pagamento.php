@@ -7,12 +7,14 @@ header('Content-Type: application/json');
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$accessToken = ''; //aqui nós vamos colocar o código
+$accessToken = ''; //aqui nós vamos colocar o código do mercado pago
 MercadoPago\SDK::setAccessToken($accessToken);
 
 if (!isset($_SESSION['cliente_id'])){
     http_response_code(401); 
-    echo json_encode(['status' => 'erro', 'mensagem' => 'Acesso negado. Necessário fazer login.']);
+    echo json_encode([
+        'status' => 'erro', 
+        'mensagem' => 'Acesso negado. Necessário fazer login.']);
     exit;
 }
 $cliente_id = $_SESSION['cliente_id']; 
@@ -51,8 +53,14 @@ try {
     $lote = $stmt_lote->fetch(PDO::FETCH_ASSOC);
 
 
-    if (!$lote) {
-        throw new Exception("Lote de ingresso inválido ou inativo.");
+   if (!$lote) {
+    $db->rollBack();
+    http_response_code(400);
+    echo json_encode([
+        'status' => 'erro',
+        'mensagem' => 'Lote inválido ou inativo'
+    ]);
+    exit;
     }
 
     $preco_unitario = $lote['preco'];
@@ -101,8 +109,8 @@ try {
     $preference = new MercadoPago\Preference();
     $item = new MercadoPago\Item();
     $item->title = $dados_compra['evento_nome'] . " (Pedido #{$pedido_id})";
-    $item->quantity = 1;
-    $item->unit_price = $total_liquido;
+    $item->quantity = $dados_compra['quantidade'];
+    $item->unit_price = $preco_unitario;
     $preference->items = [$item];
 
 
@@ -111,7 +119,7 @@ try {
         "failure" => "http://localhost/projeto_backend_2025/pages/falha.php"
     ];
     $preference->auto_return = "approved";
-    $preference->notification_url = "URL_PÚBLICA/api/webhook_mercadopago.php";
+    $preference->notification_url = ""; // aqui é para colocar a url do site
     $preference->external_reference = (string)$pedido_id;
 
     $preference->save();
