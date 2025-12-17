@@ -1,10 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Local</title>
+    <link rel="stylesheet" href="../styles/cad.css" />
+</head>
+<body class="main">
 <?php
 include "conecta.php";
-/*comentario teste*/
-/* Buscar organizações */
+
 $orgs = mysqli_query($conn, "SELECT id, nome FROM organizacao");
 
-/* Inserção do local */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST["nome"];
     $endereco = $_POST["endereco"];
@@ -22,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<h2>Cadastro de Local</h2>
+<h2 class="title">Cadastro de Local</h2>
 
 <form method="post">
     <label>Nome do Local:</label><br>

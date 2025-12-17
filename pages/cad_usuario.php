@@ -3,17 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastro de Usuários</title>
     <link rel="stylesheet" href="../styles/cad.css" />
 </head>
 <body class="main">
     <?php
 include "conecta.php";
 
-/* Buscar organizações para o select */
 $orgs = mysqli_query($conn, "SELECT id, nome FROM organizacao");
 
-/* Inserção do usuário */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST["nome"];
     $perfil = $_POST["perfil"];
