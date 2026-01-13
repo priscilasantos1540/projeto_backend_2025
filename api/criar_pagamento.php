@@ -31,7 +31,7 @@ try {
 
     $db = (new Conexao())->getConexao();
 
-    // Busca o pedido
+
     $stmt = $db->prepare("SELECT total_liquido FROM pedido WHERE id = ?");
     $stmt->execute([$pedido_id]);
     $pedido = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -42,7 +42,7 @@ try {
 
     $total = (float)$pedido['total_liquido'];
 
-    // Cria preferência
+
     $client = new PreferenceClient();
 
     $preference = $client->create([
