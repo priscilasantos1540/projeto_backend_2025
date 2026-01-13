@@ -20,7 +20,7 @@
       <a href="clientes_cadastrados.php">Clientes Cadastrados</a>
     </div>
     <?php
-      require_once(__DIR__ . '/../conecta.php');
+      require_once(__DIR__ . '/../../conecta.php');
         if(isset($_GET['opcao']) && $_GET['opcao']=='a')
         {
           $id = $_GET['id'];
@@ -190,9 +190,10 @@
             $sql = "insert into pedido (cliente_id,canal_venda,setor_id,lote_id,quantidade,valor_bruto,taxa,desconto,total_liquido,data_criacao) values ('$cliente','$canal_venda','$setor_id','$lote_id','$quantidade','$valor_bruto','$taxa','$desconto','$total_liquido','$data_criacao')";
             if(mysqli_query($bancodedados,$sql))
             {
-              header('Location: todos_pedidos.php');
+              $pedido_id = mysqli_insert_id($bancodedados);
+              header("Location: comprar.php?id=" . $pedido_id);
               exit();
-            }  
+            }
           }
 
         }
