@@ -1,6 +1,6 @@
 <?php
 include_once 'conecta.php';
-
+//teste
 $mensagem = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -24,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     mysqli_stmt_bind_param(
         $stmt,
         "ssdssiiis",
+  
         $codigo,
         $tipo,
         $valor,
