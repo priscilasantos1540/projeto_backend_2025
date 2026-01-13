@@ -11,12 +11,13 @@ $stmt = $db->prepare("
     SELECT 
         i.*, 
         e.nome AS evento_nome, 
-        e.data_evento, 
-        e.local AS evento_local
+        e.data_inicio, 
+        l.endereco AS evento_local
     FROM ingresso i
     JOIN pedido p ON i.pedido_id = p.id
     JOIN setor s ON p.setor_id = s.id
     JOIN evento e ON s.evento_id = e.id
+    JOIN local l ON e.local_id = l.id
     WHERE i.pedido_id = ?
 ");
 $stmt->execute([$pedido_id]);
@@ -153,7 +154,7 @@ $ingressos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                             <div class="info-item">
                                 <label>Data e Hora</label>
-                                <span><?= date('d/m/Y H:i', strtotime($ing['data_evento'])) ?></span>
+                                <span><?= date('d/m/Y H:i', strtotime($ing['data_inicio'])) ?></span>
                             </div>
                             <div class="info-item">
                                 <label>Local</label>
