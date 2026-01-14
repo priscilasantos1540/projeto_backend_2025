@@ -7,15 +7,13 @@
     <meta name="author" content="Quarto Periodo SI">
 
     <title>Cadastro de Clientes</title>
-     <link rel="stylesheet" href="../styles/root.css">
-     <link rel="stylesheet" href="../styles/index.css">
-     <link rel="stylesheet" href="../styles/navbar.css">
-      <link rel="stylesheet" href="../styles/lista.css">
+     <link rel="stylesheet" href="../styles/global.css">
+   
 
   </head>
   <body>
       <div class="navbar"> 
-      <a href="../index.html">Inicio</a> 
+      <a href="../index.html">Inici</a> 
       <a href="novo_pedido.php">Novo Pedido</a> 
       <a href="todos_pedidos.php">Todos os Pedidos</a>
       <a href="clientes_cadastrados.php">Clientes Cadastrados</a>
