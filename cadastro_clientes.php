@@ -6,28 +6,14 @@
     <meta name="description" content="Gestão de Eventos">
     <meta name="author" content="Quarto Periodo SI">
 
-    <title class="title">Cadastro de Clientes</title>
-
-    <link rel="stylesheet" href="../../src/styles/reset.css">
-    <link rel="stylesheet" href="../../src/styles/root.css">
-    <link rel="stylesheet" href="../../src/styles/base.css">
-    <link rel="stylesheet" href="../../src/styles/global.css">
-    <link rel="stylesheet" href="../../src/styles/home.css">
-    <link rel="stylesheet" href="../../src/styles/index.css">
-    <link rel="stylesheet" href="../../src/styles/lista.css">
-    <link rel="stylesheet" href="../../src/styles/navbar.css">
-    <link rel="stylesheet" href="../../src/styles/components/button.css">
-    <link rel="stylesheet" href="../../src/styles/components/check.css">
-    <link rel="stylesheet" href="../../src/styles/components/form.css">
-    <link rel="stylesheet" href="../../src/styles/components/input.css">
-    <link rel="stylesheet" href="../../src/styles/components/link.css">
-    <link rel="stylesheet" href="../../src/styles/components/modal.css">
-    <link rel="stylesheet" href="../../src/styles/components/select.css">
+    <title>Cadastro de Clientes</title>
+     <link rel="stylesheet" href="../styles/global.css">
+   
 
   </head>
   <body>
       <div class="navbar"> 
-      <a href="../index.html">Inicio</a> 
+      <a href="../index.html">Inici</a> 
       <a href="novo_pedido.php">Novo Pedido</a> 
       <a href="todos_pedidos.php">Todos os Pedidos</a>
       <a href="clientes_cadastrados.php">Clientes Cadastrados</a>
