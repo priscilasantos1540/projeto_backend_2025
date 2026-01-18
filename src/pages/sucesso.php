@@ -12,7 +12,7 @@ $pedido_id = $_GET['id'] ?? null;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagamento Aprovado</title>
     <link rel="stylesheet" href="../styles/global.css">
-    <link rel="stylesheet" href="../styles/pages/index.css">
+    <link rel="stylesheet" href="../styles/index.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
         .contrast { color: var(--color-green); }
