@@ -2,7 +2,7 @@
 require_once(__DIR__ . '/../../conecta.php'); 
 session_start();
 
-// Simulação de usuário para o sistema permitir o teste
+// simulação de usuário para o sistema permitir o teste
 if (!isset($_SESSION['usuario_id'])) {
     $_SESSION['usuario_id'] = 1; 
 }
@@ -21,7 +21,7 @@ if (!isset($_SESSION['usuario_id'])) {
         .contrast { color: var(--color-green); }
         .contrast-logo { color: var(--color-green-100); font-weight: 800; }
         
-        /* Estilos para os estados do check-in dentro do seu padrão */
+        
         .status-msg { font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; display: block; }
         .sucesso-text { color: var(--color-green); }
         .erro-text { color: #dc3545; }
@@ -109,7 +109,7 @@ if (!isset($_SESSION['usuario_id'])) {
                 const txtMsg = document.getElementById('txt-mensagem');
                 const infoDet = document.getElementById('info-detalhes');
 
-                // Lógica de cores baseada no seu PHP
+                
                 if (data.status === 'sucesso') {
                     txtStatus.innerText = "CHECK-IN REALIZADO";
                     txtStatus.className = "status-msg sucesso-text";
